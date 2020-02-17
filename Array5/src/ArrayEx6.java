@@ -25,16 +25,16 @@ public class ArrayEx6 {
 		for (int i = 0; i < numArr.length; i++) {
 			changed = false;               //다시 수행하는 부분에 대한 초기화
 			System.out.println(i + 1 + "번째 수행");
-			for (int n = 0; n < numArr.length - 1 - i; n++) {
-				if (numArr[n] > numArr[n + 1]) {
+			for (int n = i; n < numArr.length - 1; n++) {
+				if (numArr[n] < numArr[n + 1]) {
 					temp = numArr[n];
 					numArr[n] = numArr[n + 1];
 					numArr[n + 1] = temp;
 					
-
 					changed = true;
 
-				}cnt++;
+				}
+				cnt++;
 				for (int m = 0; m < numArr.length; m++) {
 					System.out.print(numArr[m] + "  ");
 				}
@@ -43,11 +43,6 @@ public class ArrayEx6 {
 			if (changed == false) {
 				break;
 			}
-
-//			for (int m = 0; m < numArr.length; m++) {
-//				System.out.print(numArr[m] + "  ");
-//			}
-//			System.out.println();
 		}
 
 		System.out.println("\n총 바꾼 횟수 : " + cnt);
