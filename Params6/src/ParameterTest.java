@@ -9,6 +9,9 @@ public class ParameterTest {
 //		callByValue vs callByReference
 //		값 호출			값 참조
 		
+//		기본형 매개변수 - 변수의 값을 읽기만 할 수 있다     (read only)
+//		참조형 매개변수 - 변수의 값을 읽고 변경할 수 있다  (read & write)
+		
 		Data data = new Data();
 		
 		int x = 0;		
