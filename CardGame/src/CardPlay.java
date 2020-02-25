@@ -1,3 +1,4 @@
+
 public class CardPlay {
 
 	public static void main(String[] args) {
@@ -5,10 +6,10 @@ public class CardPlay {
 		String str = "";
 		Card card = new Card();
 		
-		card.init(3, 5);
+	
 		
-		str =  card.getCard();
-		
+		card.init();
+		str =  card.getCard();		
 		System.out.println(str);
 		
 

@@ -20,6 +20,7 @@ public class ForTest7 {
 			for( int n = 1; n <= i; n++) {
 				System.out.print("*");
 			}
+			
 			System.out.println();
 		}
 		

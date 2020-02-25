@@ -12,6 +12,7 @@ import java.util.Scanner;
  * 점수 입력 값 : 100, 81, 93
  * 점수 정렬한 값 :  100, 93, 81
  *
+ * 기본정렬
  * */
 
 public class ArrTest5 {
@@ -24,7 +25,7 @@ public class ArrTest5 {
 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.print("점수 입력 값 : ");
+		System.out.print("점수 입력 값(국어, 영어, 수학)\n>> ");
 
 		//입력을 다 받는다
 		for (int i = 0; i < 3; i++) {
@@ -33,8 +34,8 @@ public class ArrTest5 {
 		
 
 		//내림차순으로 정렬
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
+		for (int i = 0; i < scoreNum.length; i++) {
+			for (int j = 0; j < scoreNum.length; j++) {
 				if (scoreNum[i] > scoreNum[j]) {
 					temp = scoreNum[i];
 					scoreNum[i] = scoreNum[j];

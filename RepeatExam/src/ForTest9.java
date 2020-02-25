@@ -3,31 +3,29 @@
  * ===============
  *
  *  
- *  
  * */
 public class ForTest9 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int i = 1;
-		int j = 0;
+		int row = 1;
+		int col = 0;
 		
-		while( (i+1) < 10 ) {
-			System.out.print((i+1) + "단"+ "\t\t");
-			i++;
+		while( (row+1) < 10 ) {
+			System.out.print((row+1) + "단"+ "\t\t");
+			row++;
 		}
 		System.out.println();
-		i = 1;
-		while (i < 10) {
+		row = 1;
+		while (row < 10) {
 
-			j = 2;
-			while (j < 10) {
-
-				System.out.print(j + " * " + i + " = " + (i * j) + "\t");
-				j++;
+			col = 2;
+			while (col < 10) {
+				System.out.print(col + " * " + row + " = " + (row * col) + "\t");
+				col++;
 			}
 			System.out.println();
-			i++;
+			row++;
 		}
 	}
 	

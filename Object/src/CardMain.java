@@ -25,7 +25,7 @@ public class CardMain {
 				+ card2.num + "이며, 크기는 " + card2.width + 
 				", " + card2.height);
 		
-		System.out.println("\n\ncard1의 width와 height를 50, 80 으로 변경한다.");
+		System.out.println("\ncard1의 width와 height를 50, 80 으로 변경한다.");
 		card1.width = 50;
 		card1.height = 80;
 		

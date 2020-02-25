@@ -10,6 +10,10 @@ public class Card {
 	Card(){
 		
 	}
+	public Card(int shapeIndex, int numberIndex) {
+		init(shapeIndex, numberIndex);
+	}
+	
 	//	랜덤
 	void init() {
 		//모양랜덤
