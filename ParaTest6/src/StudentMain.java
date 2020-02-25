@@ -5,16 +5,20 @@ public class StudentMain {
 		// TODO Auto-generated method stub
 		int sum = 0;
 		double avg = 0;
-	
 		
-		Student student = new Student
-				("홍길동", 2, 1, 100, 60, 76);
+		StudentVo student = new StudentVo();
+		student.setName("홍길동"); 
+		student.setNo(1);
+		student.setBan(2);
+		student.setKor(100);
+		student.setMath(76);
+		student.setEng(60);
+//		System.out.println(student);
 
 		
-		sum = student.getTotal();		
-		avg = student.getAverage();		
+		sum = student.getKor() + student.getEng() + student.getMath();	
+		avg = (int)((sum/3.0)*100 + 0.5)/100.0;		
 		
-		student.info();
 		
 		System.out.println("총점 : " + sum);
 		System.out.println("평균 : " + avg);
