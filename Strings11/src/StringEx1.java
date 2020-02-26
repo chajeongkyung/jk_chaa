@@ -4,6 +4,28 @@ public class StringEx1 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		Value v1 = new Value(10);
+		Value v2 = new Value(10);
+		
+		System.out.println(v1);
+		System.out.println(v2);
+		System.out.println(v1.hashCode());
+		System.out.println(v2.hashCode());
+		if(v1.equals(v2)) {
+			System.out.println("v1과v2는 같습니다");
+		}else {
+			System.out.println("v1과v2는 다릅니다");
+		}
+		
+		v2 = v1;
+		
+		if(v1.equals(v2)) {
+			
+			System.out.println("v1과v2는 같습니다");
+		}else {
+			System.out.println("v1과v2는 다릅니다");
+		}
+		
 //		String s = new String("Hello");		
 //		System.out.println(s);
 		
@@ -87,18 +109,18 @@ public class StringEx1 {
 //		System.out.println(s);
 //		String s1 = s.trim();
 //		System.out.println(s1);
-		
-		String b = String.valueOf(true);
-		String c = String.valueOf('a');
-		String i = String.valueOf(100);
-		String l = String.valueOf(100L);
-		String f = String.valueOf(10.0f);
-		String d = String.valueOf(10.0d);
-		
-		java.util.Date d1 = new java.util.Date();
-		String date = String.valueOf(d1);
-		
-		System.out.println(date);
+//		
+//		String b = String.valueOf(true);
+//		String c = String.valueOf('a');
+//		String i = String.valueOf(100);
+//		String l = String.valueOf(100L);
+//		String f = String.valueOf(10.0f);
+//		String d = String.valueOf(10.0d);
+//		
+//		java.util.Date d1 = new java.util.Date();
+//		String date = String.valueOf(d1);
+//		
+//		System.out.println(date);
 		
 		
 		
