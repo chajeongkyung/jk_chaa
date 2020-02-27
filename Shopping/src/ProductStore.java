@@ -1,35 +1,39 @@
-
-
 // 어떤 단 하나의 물건만 팔수있는 매장
-public class ProductStore {
+public class ProductStore{
 	
 	int storeMoney = 0;  // 주인장의 소지금
-	int price = 0; // 제품의 가격
-	String productName = "";
 	
+	Mask mask = new Mask();
+	Ethanol ethanol = new Ethanol();
+	int maskNum = 1;
 	
-	ProductStore(String productName, int price){
-		storeMoney = 100; // 초기자금은 무조건 100만원
-		this.price = price;
-		this.productName = productName;
-	}
-	
-	void buy(Customer customer){
-		if(customer.money >= this.price){
-			customer.money = customer.money - this.price; 
-			storeMoney = storeMoney + this.price;
-			System.out.println(this.productName + "(을)를 구입하셨습니다.");
-		}else{
-			System.out.println(this.productName + "제품을 구입하기에 ");
-			System.out.println(customer.money - this.price + " 원 부족합니다.");
+	void buyMask(Customer customer){	
+		if (maskNum == 0) {
+			System.out.println("재고가 부족합니다!");
+			return;
 		}
-	}
-
-	@Override
-	public String toString() {
-		return "ProductStore [storeMoney=" + storeMoney + ", price=" + price + ", productName=" + productName + "]";
-	}
-
+		if(customer.money >= mask.price){
+			customer.money = customer.money - mask.price; 
+			storeMoney = storeMoney + mask.price;
+			System.out.println("마스크를 구입하셨습니다.");
+			maskNum--;
+		}else{
+			System.out.println("마스크를 구입하기에 ");
+			System.out.println(customer.money - mask.price + " 원 부족합니다.");
+		}
 		
+		
+	}
+	
+	void buyEthanol(Customer customer) {
+		if(customer.money >= ethanol.price){
+			customer.money = customer.money - ethanol.price; 
+			storeMoney = storeMoney + ethanol.price;
+			System.out.println("에탄올을 구입하셨습니다.");
+		}else{
+			System.out.println("에탄올을 구입하기에 ");
+			System.out.println(customer.money - ethanol.price + " 원 부족합니다.");
+		}
+	}		
 	
 }

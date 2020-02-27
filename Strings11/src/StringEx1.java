@@ -15,9 +15,15 @@ public class StringEx1 {
 			System.out.println("v1과v2는 같습니다");
 		}else {
 			System.out.println("v1과v2는 다릅니다");
+
 		}
 		
 		v2 = v1;
+		System.out.println("\n\n\nv2 = v1후!!!!!!");
+		System.out.println(v1);
+		System.out.println(v2);
+		System.out.println(v1.hashCode());
+		System.out.println(v2.hashCode());
 		
 		if(v1.equals(v2)) {
 			

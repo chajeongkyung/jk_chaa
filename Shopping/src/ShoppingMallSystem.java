@@ -1,58 +1,47 @@
 
-
 public class ShoppingMallSystem {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		/*
+		 * 가게 물건 고객
+		 * 
+		 * 가게에는 물건이 있어야만 판매한다 에탄올(2500), 마스크(4000) 사람은 가게에 들어가서 물건을 구입할 수 있다
+		 * 
+		 * 가게는 유일하다
+		 * 
+		 * 고객은 2사람 존재한다 각자 하나만 구매한다
+		 * 
+		 */
 		
-		Customer jihun = new Customer("박지훈", 22, 100);
-		Customer jungkyung = new Customer("차정경", 24, 100);
-		Customer ueigwang = new Customer("정의광", 29, 100);
-		Customer jaemain = new Customer("노재민", 10, 100);
-		Customer younghun = new Customer("김용훈", 25, 100);
-		Customer sangah = new Customer("박상아", 30, 100);
-		Customer ahrm = new Customer("원아름", 27, 100);
-		Customer hyunsuk = new Customer("오현석", 27, 100);
-		Customer jaegun = new Customer("정제건", 25, 100);
-		Customer chanyang = new Customer("이찬양", 25, 100);
+		ProductStore jkstore = new ProductStore();
 		
-		ProductStore computerStore = new ProductStore("최고의 컴퓨터", 10);
-		ProductStore mart = new ProductStore("연필", 1);
-		ProductStore penMart = new
-				ProductStore("볼펜", 3);
-		ProductStore eraMart = new ProductStore("지우개", 5);
-		ProductStore whiteMart = new ProductStore("화이트", 1);
-		ProductStore noteMart = new ProductStore("공책", 2);
+		Customer customer1 = new Customer("차정경", 24, 20000);
+		Customer customer2 = new Customer("이찬양", 24, 70000);
+
+		customer1.info();
+		jkstore.buyMask(customer1);
+//		jkstore.buyMask(customer1);
 		
-		computerStore.buy(jihun);
-		System.out.println(jihun);
-		System.out.println(computerStore);
-		System.out.println();
-	
-		mart.buy(sangah);
-		System.out.println(sangah);
-		System.out.println(mart);
-		System.out.println();
+		System.out.println("현재 남은 돈은 " + customer1.money + " 원입니다");
+		System.out.println("===================");
 		
-		penMart.buy(ahrm);
-		System.out.println(ahrm);
-		System.out.println(penMart);
-		System.out.println();
+
 		
-		eraMart.buy(hyunsuk);
-		System.out.println(hyunsuk);
-		System.out.println(eraMart);
-		System.out.println();
 		
-		whiteMart.buy(jaegun);
-		System.out.println(jaegun);
-		System.out.println(whiteMart);
-		System.out.println();
+//		customer2.info();
+//		jkstore.buyEthanol(customer2);
+//		System.out.println("현재 남은 돈은 " + customer2.money + " 원입니다");
+//		
+//		System.out.println("===================");
+//		System.out.println(customer2);
 		
-		noteMart.buy(chanyang);
-		System.out.println(chanyang);
-		System.out.println(noteMart);
-	
+		
+		
+		
+		
+		
+		
 		
 	}
 

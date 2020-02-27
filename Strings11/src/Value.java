@@ -8,10 +8,10 @@ public class Value {
 		
 	}
 
-	@Override
-	public String toString() {
-		return "Value [value=" + value + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Value [value=" + value + "]";
+//	}
 	
 	
 }
