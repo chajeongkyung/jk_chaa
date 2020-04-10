@@ -47,9 +47,17 @@
 </body>
 
 <script type="text/javascript">
-	var myObj = document.getElementById('title');
-			
-	myObj.style.color = 'red';
+
+	var myObj = document.getElementById('title2');
+	myObj.style.border = "1px dotted black";
+	 
+	var myObj1 = document.getElementById('list');
+	myObj1.style.fontSize = "10px";
+	myObj1.style.textAlign = "center";
+	
+	var myObj2 = document.getElementById('title');
+	myObj2.style.backgroundColor = "green";
+	
 </script>
 
 </html>

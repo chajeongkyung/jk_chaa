@@ -17,7 +17,7 @@
 				getElementById
 			</li>
 			<li>
-				getElementsByTagnName
+				getElementsByTagName
 			</li>
 		</ul>
 		<h2 id="title2">
@@ -47,9 +47,17 @@
 </body>
 
 <script type="text/javascript">
-	var myObj = document.getElementById('title');
-			
-	myObj.style.color = 'red';
+	var ulObjArr = document.getElementsByTagName('ul');
+	var myObj = ulObjArr[1].getElementsByTagName('li')[1];
+
+	myObj.style.border = '1px solid red';
+
+	var myObj1 = liObjArr[7];
+
+	myObj1.style.border = '1px solid red';
+
+	
+	
 </script>
 
 </html>
