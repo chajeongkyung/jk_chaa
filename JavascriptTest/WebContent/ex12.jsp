@@ -9,9 +9,13 @@
 
 	var questionStr = '';
 	questionStr = 'web js hi psu';
+	var solutionStr;
 	
-	var solutionStr = '';
-	var findIndex = questionStr.indexOf("js");
+	solutionStr = questionStr.replace('psu', '\'psu\'');
+	document.write(solutionStr);
+	
+/* 	var solutionStr = '';
+ 	var findIndex = questionStr.indexOf("js");
 	
 	if (findIndex < 0) {
 		solutionStr = "js 없음";
@@ -19,8 +23,9 @@
 		solutionStr = "js 포함";
 		
 	}
-
-	alert(solutionStr);
+	alert(solutionStr); */
+	
+	
 	
 </script>
 
@@ -29,7 +34,6 @@
 
 <body>
 
-	
 </body>
 
 </html>
