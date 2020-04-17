@@ -16,13 +16,13 @@
 	숫자를 입력해주세요
 	<input id='yourNumberObj' type="text">
 	
-	<input type="button" value="계산 버튼" onclick="calcul()">
+	<input type="button" value="계산 버튼" onclick="calculFnc();">
 	버튼을 누르면 누군가 적은 숫자를 +10 해준다 
 	
 </body>
 <script type="text/javascript">
 
-	function calcul() {		
+	function calculFnc() {		
 		var sum = 0;
 		var num = document.getElementById('yourNumberObj');
 		var num1 = num.value;
