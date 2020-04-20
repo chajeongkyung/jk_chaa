@@ -7,20 +7,27 @@
    <title>Insert title here</title>   
 <script type="text/javascript">
 
-	window.onload = function(){
+	function inputFnc() {
 		var nameObj = document.getElementById('inputName');
 		var yearObj = document.getElementById('inputYear');
-		var myBtn = document.getElementById('divBtn');	
-		
-		var divObj = document.getElementById('divLine');
-		divObj.style.border = '1px solid black';
 		
 		var nameVal = nameObj.value;
 		var yearVal = yearObj.value;
-		
-		inputName.value = nameVal;
-		inputYear.value = yearVal;
 	
+		var divObj = document.getElementById('divLine');
+		
+		divObj.innerHTML = '이름:' + nameVal;
+		divObj.innerHTML += '<br/>';
+		divObj.innerHTML += '태어난 해:' + yearVal;
+	}
+
+	window.onload = function(){
+		//실행되자마자 보더
+		var divObj = document.getElementById('divLine');
+		divObj.style.border = '1px solid black';
+		
+		var btn = document.getElementById('divBtn');
+		btn.onclick = inputFnc; 
 	}	
 	
 </script>
@@ -31,8 +38,8 @@
 	<div id='divBtn' style="border: 1px solid black;">버튼</div>
 	
 	<div>
-		이름<input id="inputName" type="text" value="">
-		태어난 해<input id="inputYear" type="text" value="">
+		<span>이름</span><input id="inputName" type="text" value="">
+		<span>태어난 해</span><input id="inputYear" type="text" value="">
 	</div>
 	
 	<div id="divLine">보더준다(실행하자마자)
