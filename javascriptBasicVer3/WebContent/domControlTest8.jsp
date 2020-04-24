@@ -32,7 +32,6 @@
 			copyulObj.removeChild(liObjList[4]);
 		}
 		//복제한다
-// 		bodyObj.appendChild(copyulObj);
 		bodyObj.insertBefore(copyulObj, ulObj);
 		
 		
