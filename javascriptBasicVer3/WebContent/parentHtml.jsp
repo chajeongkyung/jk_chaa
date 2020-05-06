@@ -30,6 +30,7 @@
 </head>
 <body>
 	<button>날 클릭하면 팝업창이 떠</button>
+	<input type="text" id='parentValue'>
 
 </body>
 </html>
