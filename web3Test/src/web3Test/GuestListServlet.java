@@ -9,17 +9,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.GenericServlet;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class GuestListServlet extends GenericServlet {
-
+public class GuestListServlet extends HttpServlet {
 	@Override
-	public void service(ServletRequest request, ServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+	protected void doGet(HttpServletRequest req, 
+			HttpServletResponse res) 
+					throws ServletException, IOException {
 		// 데이터베이스 관련 객체 변수 선언
 		Connection conn = null;// 연결 db그자체
 		Statement stmt = null;// 상태 문장그자체
@@ -27,15 +29,23 @@ public class GuestListServlet extends GenericServlet {
 
 		// 사용할 jdbc 드라이버:드라이버 타이비서버주소와 포트:db서비스 아이디
 		// (localhost=127.0.0.1 자기자신 IPv4)
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "jsp";
-		String password = "jsp12";
-
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String user = "jsp";
+//		String password = "jsp12";
+		ServletContext sc = this.getServletContext();
+		
+		//주소가 보이면 안된다!!
+		String driver = sc.getInitParameter("driver");
+		String url = sc.getInitParameter("url");
+		String user = sc.getInitParameter("user");
+		String password = sc.getInitParameter("password");		
+		
 		try {
 			// 클래스 로드
 			// 1. jdbc 드라이버 등록(하기위해 알집파일을 붙여넣었음, 해당경로에 진짜 파일이 있음!)
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(driver);
 
+			
 			// 2. 데이터베이스 연결
 			conn = DriverManager.getConnection(url, user, password);
 
@@ -50,13 +60,11 @@ public class GuestListServlet extends GenericServlet {
 			// 4. 결과 가져오기
 			rs = stmt.executeQuery(sql);
 
-			response.setContentType("text/html");
-			response.setCharacterEncoding("UTF-8");
+			res.setContentType("text/html");
+			res.setCharacterEncoding("UTF-8");
 
-			PrintWriter out = response.getWriter();
+			PrintWriter out = res.getWriter();
 
-			// 추가
-			// out.println("<a href='add'>신규 회원</a><br>");
 			String htmlStr = "";
 
 			htmlStr += "<p>";
@@ -69,7 +77,6 @@ public class GuestListServlet extends GenericServlet {
 
 			out.println(htmlStr);
 			
-//			int mNo = rs.getInt("mNo");
 			
 			// 5. 출력
 			while (rs.next()) {
@@ -78,7 +85,8 @@ public class GuestListServlet extends GenericServlet {
 						rs.getInt("mno") + ", <a href='./update?mNo="+rs.getInt("mNo")+"'>" 
 								+ rs.getString("mname") + "</a>, " + rs.getString("email") + ", "
 								+ rs.getString("cre_date") + ", " + rs.getString("mod_date") + ", "
-								+ rs.getString("user_id") + ", " + rs.getString("sal") + "<br/> ");
+								+ rs.getString("user_id") + ", " + rs.getString("sal") + ","
+								+ "<a href='./delete?mNo="+rs.getInt("mNo")+"'>[삭제]</a>" + "<br/> ");
 
 			}
 			out.println("</body></html>");

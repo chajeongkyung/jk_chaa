@@ -6,6 +6,26 @@
 
 	<display-name>web3Test</display-name>
 
+	<context-param>
+		<param-name>driver</param-name>
+		<param-value>oracle.jdbc.driver.OracleDriver</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>url</param-name>
+		<param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>user</param-name>
+		<param-value>jsp</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>password</param-name>
+		<param-value>jsp12</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>GuestList</servlet-name>
 		<servlet-class>web3Test.GuestListServlet</servlet-class>
@@ -17,23 +37,33 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>GusetAdd</servlet-name>
+		<servlet-name>GuestAdd</servlet-name>
 		<servlet-class>web3Test.GuestAddServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>GusetAdd</servlet-name>
+		<servlet-name>GuestAdd</servlet-name>
 		<url-pattern>/guest/add</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>GusetUpdate</servlet-name>
+		<servlet-name>GuestUpdate</servlet-name>
 		<servlet-class>web3Test.GuestUpdateServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>GusetUpdate</servlet-name>
+		<servlet-name>GuestUpdate</servlet-name>
 		<url-pattern>/guest/update</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GuestDelete</servlet-name>
+		<servlet-class>web3Test.GuestDeleteServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GuestDelete</servlet-name>
+		<url-pattern>/guest/delete</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

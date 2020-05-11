@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,10 +52,13 @@ public class GuestAddServlet extends HttpServlet{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "jsp";
-		String password = "jsp12";
-		String driverUrl = "oracle.jdbc.driver.OracleDriver";
+		ServletContext sc = this.getServletContext();
+		
+		//주소가 보이면 안된다!!
+		String driver = sc.getInitParameter("driver");
+		String url = sc.getInitParameter("url");
+		String user = sc.getInitParameter("user");
+		String password = sc.getInitParameter("password");		
 		
 		req.setCharacterEncoding("UTF-8"); //한글 깨짐 방짐
 		
@@ -67,7 +71,7 @@ public class GuestAddServlet extends HttpServlet{
 		String salNum = req.getParameter("sal");
 		
 		try {
-			Class.forName(driverUrl);
+			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			
 			//?는 변화할 수 있는 값

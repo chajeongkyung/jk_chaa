@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,15 +30,19 @@ public class GuestUpdateServlet extends HttpServlet {
 
 		// 사용할 jdbc 드라이버:드라이버 타이비서버주소와 포트:db서비스 아이디
 		// (localhost=127.0.0.1 자기자신 IPv4)
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "jsp";
-		String password = "jsp12";
 
+		ServletContext sc = this.getServletContext();
+		
+		String driver = sc.getInitParameter("driver");
+		String url = sc.getInitParameter("url");
+		String user = sc.getInitParameter("user");
+		String password = sc.getInitParameter("password");		
+		
 		int mNo = Integer.parseInt(request.getParameter("mNo"));
 
 		try {
 
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(driver);
 
 			conn = DriverManager.getConnection(url, user, password);
 
@@ -67,9 +72,6 @@ public class GuestUpdateServlet extends HttpServlet {
 			response.setCharacterEncoding("UTF-8");
 
 			PrintWriter out = response.getWriter();
-
-			// 추가
-			// out.println("<a href='add'>신규 회원</a><br>");
 			String htmlStr = "";
 
 			htmlStr += "<!DOCTYPE html>";
@@ -80,12 +82,13 @@ public class GuestUpdateServlet extends HttpServlet {
 			htmlStr += "</head>";
 			htmlStr += "<body>";
 			htmlStr += "<h1>회원정보</h1>	";
-			htmlStr += "<form action='/member/update' method='post'>";
+			htmlStr += "<form action='/web3Test/guest/update' method='post'>";
 			htmlStr += "번호: <input type='text' name='mNo' " + "value='" + mNo + "'readonly='readonly'><br>";
 			htmlStr += "이름: <input type='text' name='name' value='" + mName + "'><br>";
 			htmlStr += "이메일: <input type='text' name='email' value='" + email + "'><br>";
 			htmlStr += "가입일: " + creDate + "<br>";
 			htmlStr += "<input type='submit' value='저장'>";
+			htmlStr += "<input type='button' value='삭제' onclick='location.href=\"./delete?mNo="+rs.getInt("MNO")+"\"'>";
 			htmlStr += "<input type='button' value='취소' onclick='location.href=\"./list\"'>";
 			htmlStr += "</form>	";
 			htmlStr += "</body>";
@@ -128,9 +131,99 @@ public class GuestUpdateServlet extends HttpServlet {
 					// TODO: handle exception
 					e.printStackTrace();
 				}
-			}
-		}
+			}//if 종료
+		}//finally 종료
 
+	}//doGet 종료
+
+	@Override
+	protected void doPost(HttpServletRequest req,
+			HttpServletResponse resp) 
+					throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		req.setCharacterEncoding("UTF-8");
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		ServletContext sc = this.getServletContext();
+		
+		//주소가 보이면 안된다!!
+		String driver = sc.getInitParameter("driver");
+		String url = sc.getInitParameter("url");
+		String user = sc.getInitParameter("user");
+		String password = sc.getInitParameter("password");		
+		
+		String email = req.getParameter("email");		
+		String name = req.getParameter("name");		
+		int mNo = Integer.parseInt(req.getParameter("mNo"));
+		String sql = "";
+		
+		try {
+			Class.forName(driver);
+			
+			System.out.println("오라클 드라이버 로드");
+			conn = DriverManager.getConnection(url, user, password);
+		
+			sql += "update guest";
+			sql += " set email = ?, "
+					+ "mname =?, mod_date=sysdate";
+			sql += " where mno = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, mNo);
+
+			pstmt.executeUpdate();
+			
+			resp.sendRedirect("./list");
+			
+			//화면만드는부분
+//			resp.setContentType("text/html");
+//			resp.setCharacterEncoding("UTF-8");
+//			
+//			PrintWriter out = resp.getWriter();
+//			
+//			String htmlStr = "";
+//			
+//			htmlStr += "<html><head><title>회원정보수정결과</title></head>";
+//			htmlStr += "</head>";
+//			
+//			htmlStr += "<body>";
+//			htmlStr += "<p>수정 성공입니다.!</p>";
+//			htmlStr += "</body></html>";
+//					
+//			out.println(htmlStr);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}  finally {
+				//자원해제
+				//상태해제
+				if (pstmt != null) {
+					try {
+						pstmt.close();
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+				}
+				//연결해제
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+				}//if 종료
+		}//finally 종료
+		
 	}
-
 }
