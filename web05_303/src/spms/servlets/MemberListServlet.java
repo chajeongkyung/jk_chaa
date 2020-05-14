@@ -36,15 +36,12 @@ public class MemberListServlet extends HttpServlet {
 			
 			conn = (Connection)sc.getAttribute("conn");
 			
-			//3.sql 실행 객체 준비
-			// sql 실행문
-			
 			String sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE" 
 					+ " FROM MEMBER" 
 					+ " ORDER BY MNO ASC";
 
 			pstmt = conn.prepareStatement(sql);
-			// 4.결과 가져오기 (여기까지 비즈니스)
+
 			rs = pstmt.executeQuery();
 
 			System.out.println("쿼리수행성공");
@@ -52,7 +49,6 @@ public class MemberListServlet extends HttpServlet {
 			response.setContentType("text/html");
 			response.setCharacterEncoding("UTF-8");
 			
-			//new=호출
 			ArrayList<MemberDto> memberList = 
 					new ArrayList<MemberDto>();
 			

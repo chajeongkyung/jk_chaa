@@ -36,7 +36,7 @@
 	</a>,
 	<%=memberDto.getEmail() %>,
 	<%=memberDto.getCreateDate() %>
-	<a href='.delete?no=<%=memberDto.getNo() %>'>[삭제]</a>
+	<a href='delete?no=<%=memberDto.getNo() %>'>[삭제]</a>
 	<br/>	
 	<%
 		}
