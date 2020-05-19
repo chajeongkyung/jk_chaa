@@ -22,7 +22,7 @@
 	%>
 	
 	<form action='./update' method='post'>
-		번호: <input type='text' name='mNo' value='<%=memberDto.getNo() %>' readonly='readonly'><br>
+		번호: <input type='text' name='no' value='<%=memberDto.getNo() %>' readonly='readonly'><br>
 		이름: <input type='text' name='name' value='<%=memberDto.getName() %>'><br>
 		이메일: <input type='text' name='email' value='<%=memberDto.getEmail() %>'><br>
 		가입일: <%=memberDto.getCreateDate() %><br>

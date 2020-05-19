@@ -143,7 +143,7 @@ public class MemberUpdateServlet extends HttpServlet {
 
 			pstmt.executeUpdate();
 
-			resp.sendRedirect("./list");
+			resp.sendRedirect("../member/list");
 
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -157,14 +157,7 @@ public class MemberUpdateServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-			} // if 종료
+	
 		} // finally 종료
 
 	}// doPost종료
